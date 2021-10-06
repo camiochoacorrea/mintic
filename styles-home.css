@@ -1,0 +1,14 @@
+
+.bg-light{
+    background-color: darkcyan !important;
+}
+.d-block{
+    max-height: 400px !important;
+}
+
+#alto{
+    max-height: 200px !important;
+    margin-bottom: 50px;
+}
+
+  
