@@ -1,0 +1,36 @@
+h2 {
+    background-color: mediumblue;
+    font-size: 40px;
+}
+
+#my-title {
+    color: midnightblue;
+    font-size: x-large;
+}
+
+
+.title-style{
+    font-size: larger;
+    font-weight: bold;
+    color: crimson;
+}
+.btn{
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.btn-danger{
+    background-color: #d65656;
+    color: rgb(62, 230, 230);
+}
+.btn-primary{
+    background-color: #378106;
+    color: black;
+
+}
+
+span{
+    background-color: darkcyan;
+}
