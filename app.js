@@ -16,6 +16,7 @@ app.get("/",(request,response)=>{
 })
 app.get("/get-products", async(request,response) =>{
     const [rows,fields] = await connection.execute("SELECT * FROM products");
+    console.log({data:rows})
     response.json({data:rows})
 })    
 
@@ -28,14 +29,18 @@ app.get("/get-user", async(req,res) =>{
 
 app.post("/add-product", async (request,response) =>{
     try {
-        const {name,price,stock,description} = request.body;
+    console.log(request.body)    
+    const {name,price,stock,description} = request.body;
     await connection.execute(`INSERT INTO products (name,price,stock,description) VALUES('${name}',${price},${stock},'${description}')`);
     response.json({status:"ok"})
-    } catch (error) {
+
+    }
+
+     catch (error) {
         console.log(error);
         response.json(error);
     }
-    response.json(product)
+     /* response.json(product) */
 
 })
 
@@ -54,14 +59,14 @@ app.delete("/delete-product", (request,response) =>{
 })
 
 app.listen(app.get('port'), async() => {
-    // connection = await mysql.createConnection({
-    //     host     : 'localhost',
-    //     user     : 'root',
-    //     password : 'Josesito00*',
-    //     database : 'shopping',
-    //     Promise: bluebird
-    //   });
+    connection = await mysql.createConnection({
+        host     : 'sql10.freesqldatabase.com',
+        user     : 'sql10446047',
+        password : '3xCpIJNzPi',
+        database : 'sql10446047',
+        Promise: bluebird
+      });
     
-    console.log("server running on port :" + port );
+    console.log("server running on port :" + app.get ('port'));
 
 });
