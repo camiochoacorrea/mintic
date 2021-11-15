@@ -1,0 +1,16 @@
+.login-title{
+    color: rebeccapurple;
+}
+
+.container {
+    margin-top: 80px;
+}
+.ancho{
+    width: 30%;
+    height: 25px;
+    padding-bottom: 50px;
+}
+
+#pass-ancho{
+    width: 30%;
+}
