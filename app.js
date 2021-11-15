@@ -27,6 +27,20 @@ app.get("/get-user", async(req,res) =>{
 
 } )
 
+app.post("/control-usuarios", async (request,response) =>{
+    try {
+        console.log(request.body)
+        const {email,name,rol,estado}= request.body;
+        await connection.execute(`INSERT INTO users(email,name,rol,estado) VALUES ('${email}','${name}','${rol}','${estado}')`);
+        response.json ({status:"ok"})
+        
+    } catch (error) {
+        console.log(error);
+        response,json(error);
+    }
+    response.json(users)
+})
+
 app.post("/add-product", async (request,response) =>{
     try {
     console.log(request.body)    
@@ -40,7 +54,24 @@ app.post("/add-product", async (request,response) =>{
         console.log(error);
         response.json(error);
     }
-     /* response.json(product) */
+      response.json(product) 
+
+})
+
+app.post("/RegistroVentas", async (request,response) =>{
+    try {
+    console.log(request.body)    
+    const {idcliente,nombrecliente,idproducto,precioUniario,cantidad,total} = request.body;
+    await connection.execute(`INSERT INTO ventas (idcliente,nombrecliente,idproducto,precioUniario,cantidad,total) VALUES(${idcliente},'${nombrecliente}',${idproducto},${precioUniario},${cantidad},${total})`);
+    response.json({status:"ok"})
+
+    }
+
+     catch (error) {
+        console.log(error);
+        response.json(error);
+    }
+      response.json(ventas) 
 
 })
 
@@ -61,9 +92,10 @@ app.delete("/delete-product", (request,response) =>{
 app.listen(app.get('port'), async() => {
     connection = await mysql.createConnection({
         host     : 'sql10.freesqldatabase.com',
-        user     : 'sql10446047',
-        password : '3xCpIJNzPi',
-        database : 'sql10446047',
+        user     : 'sql10451170',
+        password : 'BsDC5rT7HZ',
+        database : 'sql10451170',
+        port : 3306,
         Promise: bluebird
       });
     
